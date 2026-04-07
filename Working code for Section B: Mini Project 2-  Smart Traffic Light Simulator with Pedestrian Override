@@ -1,0 +1,70 @@
+// Vehicle LEDs
+const int redCar = 4;
+const int yellowCar = 5;
+const int greenCar = 6;
+
+// Pedestrian LEDs
+const int redPed = 7;
+const int greenPed = 8;
+
+// Buzzer & Button
+const int buzzer = 9;
+const int button = 2;
+
+void setup() {
+  pinMode(redCar, OUTPUT);
+  pinMode(yellowCar, OUTPUT);
+  pinMode(greenCar, OUTPUT);
+
+  pinMode(redPed, OUTPUT);
+  pinMode(greenPed, OUTPUT);
+
+  pinMode(buzzer, OUTPUT);
+  pinMode(button, INPUT_PULLUP);
+}
+
+void loop() {
+
+  // 🟢 NORMAL STATE (Cars go, pedestrians wait)
+  digitalWrite(greenCar, HIGH);
+  digitalWrite(yellowCar, LOW);
+  digitalWrite(redCar, LOW);
+
+  digitalWrite(redPed, HIGH);
+  digitalWrite(greenPed, LOW);
+
+  noTone(buzzer);
+
+  // Check if button pressed
+  if (digitalRead(button) == LOW) {
+
+    // 🟡 Step 1: Yellow light
+    digitalWrite(greenCar, LOW);
+    digitalWrite(yellowCar, HIGH);
+    delay(2000);
+
+    // 🔴 Step 2: Cars stop
+    digitalWrite(yellowCar, LOW);
+    digitalWrite(redCar, HIGH);
+
+    // 🚶 Step 3: Pedestrians go
+    digitalWrite(redPed, LOW);
+    digitalWrite(greenPed, HIGH);
+
+    // 🔊 Buzzer ON
+    tone(buzzer, 1000);
+
+    delay(5000); // crossing time
+
+    // 🔄 Reset system
+    digitalWrite(redCar, LOW);
+    digitalWrite(greenPed, LOW);
+
+    digitalWrite(greenCar, HIGH);
+    digitalWrite(redPed, HIGH);
+
+    noTone(buzzer);
+
+    delay(1000);
+  }
+}
