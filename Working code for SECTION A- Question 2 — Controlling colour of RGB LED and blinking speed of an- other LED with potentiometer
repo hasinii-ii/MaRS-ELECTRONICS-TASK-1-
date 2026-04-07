@@ -1,0 +1,60 @@
+// RGB LED pins (PWM)
+const int redPin   = 9;
+const int greenPin = 10;
+const int bluePin  = 11;
+
+// Normal LED
+const int blinkLed = 6;
+
+// Potentiometer
+const int potPin = A0;
+
+unsigned long prevBlink = 0;
+bool blinkState = false;
+
+void setup() {
+  pinMode(redPin,   OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin,  OUTPUT);
+  pinMode(blinkLed, OUTPUT);
+}
+
+void loop() {
+  int potVal = analogRead(potPin); // 0–1023
+
+  // --- RGB Colour Control ---
+  // Map pot range into 3 colour zones:
+  // 0–341   → Red to Green
+  // 342–682 → Green to Blue
+  // 683–1023 → Blue to Red
+
+  int r, g, b;
+  if (potVal < 341) {
+    r = map(potVal, 0, 341, 255, 0);
+    g = map(potVal, 0, 341, 0, 255);
+    b = 0;
+  } else if (potVal < 682) {
+    r = 0;
+    g = map(potVal, 341, 682, 255, 0);
+    b = map(potVal, 341, 682, 0, 255);
+  } else {
+    r = map(potVal, 682, 1023, 0, 255);
+    g = 0;
+    b = map(potVal, 682, 1023, 255, 0);
+  }
+
+  analogWrite(redPin,   r);
+  analogWrite(greenPin, g);
+  analogWrite(bluePin,  b);
+
+  // --- Blink Rate Control ---
+  // pot = 0 → 1500ms interval | pot = 1023 → 100ms interval
+  unsigned long blinkInterval = map(potVal, 0, 1023, 1500, 100);
+
+  unsigned long now = millis();
+  if (now - prevBlink >= blinkInterval) {
+    prevBlink = now;
+    blinkState = !blinkState;
+    digitalWrite(blinkLed, blinkState);
+  }
+}
