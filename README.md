@@ -13,7 +13,7 @@ SECTION A- Question 2 — Controlling colour of RGB LED and blinking speed of an
 Tinkercard link:
 https://www.tinkercad.com/things/2G1fBwocBhV-q2-rgb-colour-blink-rate-via-potentiometer/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fall&sharecode=--GPdmvyjQGLgBZ6QjxlqVaC4xcKQeWJycMeta24cp4
 code link:
-https://github.com/hasinii-ii/MaRS-ELECTRONICS-TASK-1-/blob/2c8c99fd5e2c30b434f91547093dac79a771c5bb/Working%20code%20for%20Section%20B%3A%20Mini%20Project%20-%20Smart%20Distance%20Alert%20System
+https://github.com/hasinii-ii/MaRS-ELECTRONICS-TASK-1-/blob/e3475a9b334a9be062537fdfe093d71e57423538/Working%20code%20for%20SECTION%20A-%20Question%202%20%E2%80%94%20Controlling%20colour%20of%20RGB%20LED%20and%20blinking%20speed%20of%20an-%20other%20LED%20with%20potentiometer
 Explanation:
 A potentiometer connected to A0 outputs an analog value from 0 to 1023, which controls two things at once. The value is divided into three colour zones that smoothly transition the RGB LED through Red→Green→Blue using analogWrite() with map() for interpolation. The same potentiometer value is also mapped to a blink interval between 100ms and 1500ms, controlling how fast a separate LED blinks. A millis()-based timer handles the blink so both colour and speed update in real time without any delay() blocking the loop.
 code logic:
