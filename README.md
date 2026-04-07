@@ -22,7 +22,7 @@ Explanation:
 The LED turns on after a random delay of 2–7 seconds, seeded from electrical noise on a floating analog pin using randomSeed(analogRead(A0)). The button is wired with INPUT_PULLUP, meaning Arduino's internal resistor keeps the pin HIGH — pressing the button pulls it LOW, requiring no external resistor. When pressed, reaction time is calculated as millis() - ledOnTime, giving elapsed milliseconds since the LED turned on. The result is printed to the Serial Monitor along with a performance rating, and a new random round begins automatically.
 code logic:
  INPUT_PULLUP keeps the button pin HIGH internally — pressing it pulls it LOW, requiring no external resistor. randomSeed(analogRead(A0)) seeds the RNG from electrical noise on a floating analog pin. When the LED turns on, millis() records ledOnTime. On button press, millis() - ledOnTime gives reaction time in milliseconds. After each round, a new random delay is set.
- Section B: Mini Project
+ Section B: Mini Project - Smart Distance Alert System
  Tinkercad Link:
  https://www.tinkercad.com/things/eq8ynWE2mUe/editel?returnTo=%2Fdashboard&sharecode=X8kD24sGivNusxO6zn3_r83DPIsSMnFiZHRfqCbPnRg
   - What the project does and why I chose it
