@@ -1,10 +1,10 @@
-# MaRS-ELECTRONICS-TASK-1-
+# MaRS-ELECTRONICS-TASK-1-SUBMISSION
 
 MaRS Club Electronics Subsystem Task 1 submission including Tinkercad simulations and mini project
 
 SECTION A- Question 1 — Blinking LED with different time interval
 
-Tinkercad Link:
+Tinkercard Link:
 https://www.tinkercad.com/things/j6rlwBen4zJ-start-simulating/editel?lessonid=EHD2303J3YPUS5Z&projectid=OT2JZ1PL20FZRMO&returnTo=https:%2F%2Fwww.tinkercad.com%2Fdashboard%2Ftutorials&sharecode=Z5hC19WurOL88FCPqzw3z6EdhtDGP3xFHVoQiNyZrwM
 
 Code link:
@@ -32,7 +32,7 @@ code logic:
  
 SECTION A- Question 3 — Build a reaction time tester
 
-Tinkercad Link:
+Tinkercard Link:
  https://www.tinkercad.com/things/cocej4FUYVg/editel?returnTo=%2Fdashboard%2Fdesigns%2Fall&sharecode=0cWRxQI901A2jKC4GXbXtF1Dv1tDOVsUnxwYXIBGcJw
  
  code link:
@@ -46,7 +46,7 @@ code logic:
  
  Section B: Mini Project 1 - Smart Distance Alert System
  
- Tinkercad Link:
+ Tinkercard Link:
  https://www.tinkercad.com/things/eq8ynWE2mUe/editel?returnTo=%2Fdashboard&sharecode=X8kD24sGivNusxO6zn3_r83DPIsSMnFiZHRfqCbPnRg
  
  code link:
@@ -91,7 +91,7 @@ caution beep, which lets the function handle its own off-timing in the backgroun
 
  Section B: Mini Project 2 - Smart Traffic Light Simulator with Pedestrian Override
  
- Tinkercad Link:
+ Tinkercard Link:
  https://www.tinkercad.com/things/htt5uoeF68Q-smart-traffic-light-simulator-with-pedestrian-override-/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fall&sharecode=g5caw_u_mo7VN_O8OwqkaN3jdzo8A1bw9J6D9DQEFb4
  
 code link:
