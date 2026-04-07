@@ -1,4 +1,4 @@
-# MaRS-ELECTRONICS-TASK-1-SUBMISSION
+MaRS Club-ELECTRONICS SUBSYSTEM-TASK 1-EC25I1006
 
 MaRS Club Electronics Subsystem Task 1 submission including Tinkercad simulations and mini project
 
