@@ -1,0 +1,72 @@
+// HC-SR04 Ultrasonic Sensor
+const int trigPin = 9;
+const int echoPin = 10;
+
+// LEDs: Green (safe), Yellow (caution), Red (danger)
+const int greenLed  = 4;
+const int yellowLed = 5;
+const int redLed    = 6;
+
+// Buzzer
+const int buzzer = 7;
+
+// Distance thresholds (cm)
+const int SAFE_DIST    = 40;
+const int CAUTION_DIST = 20;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(trigPin,   OUTPUT);
+  pinMode(echoPin,   INPUT);
+  pinMode(greenLed,  OUTPUT);
+  pinMode(yellowLed, OUTPUT);
+  pinMode(redLed,    OUTPUT);
+  pinMode(buzzer,    OUTPUT);
+}
+
+long measureDistance() {
+  // Send 10µs pulse
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  // Read echo duration
+  long duration = pulseIn(echoPin, HIGH);
+
+  // Convert to cm: speed of sound = 343 m/s
+  // distance = (duration × 0.0343) / 2
+  return duration * 0.0343 / 2;
+}
+
+void setAlert(long dist) {
+  // Reset all
+  digitalWrite(greenLed,  LOW);
+  digitalWrite(yellowLed, LOW);
+  digitalWrite(redLed,    LOW);
+  noTone(buzzer);
+
+  if (dist > SAFE_DIST) {
+    digitalWrite(greenLed, HIGH);
+    // No buzzer
+  } else if (dist > CAUTION_DIST) {
+    digitalWrite(yellowLed, HIGH);
+    tone(buzzer, 1000, 100);  // short beep
+    delay(400);
+  } else {
+    digitalWrite(redLed, HIGH);
+    tone(buzzer, 2000);       // continuous alarm
+  }
+}
+
+void loop() {
+  long distance = measureDistance();
+
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  setAlert(distance);
+  delay(200);
+}
