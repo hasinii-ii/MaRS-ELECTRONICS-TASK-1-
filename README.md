@@ -92,8 +92,7 @@ caution beep, which lets the function handle its own off-timing in the backgroun
  Section B: Mini Project 2 - Smart Traffic Light Simulator with Pedestrian Override
  
  Tinkercad Link:
- https://www.tinkercad.com/things/htt5uoeF68Q/editel?returnTo=%2Fdashboard&sharecode=qqfjmiD3tMnEvSrM7bsK9GGt2sijDC0lJzBVDQkVAhY&sharecode=Ey3EyRJJlPiVKVvOkUr_xuX42PjVTuAaoVqvRLwRkVY
- 
+ https://www.tinkercad.com/things/htt5uoeF68Q-smart-traffic-light-simulator-with-pedestrian-override-/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fall&sharecode=g5caw_u_mo7VN_O8OwqkaN3jdzo8A1bw9J6D9DQEFb4
 code link:
 https://github.com/hasinii-ii/MaRS-ELECTRONICS-TASK-1-/blob/55b85140472c5e99f6f3e14a2ef95b009d4c0f9e/Working%20code%20for%20Section%20B%3A%20Mini%20Project%202-%20%20Smart%20Traffic%20Light%20Simulator%20with%20Pedestrian%20Override
 
