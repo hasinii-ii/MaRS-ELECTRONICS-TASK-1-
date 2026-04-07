@@ -67,15 +67,15 @@ logic goes into something that seems simple on the surface: measuring a distance
 which zone it falls into, and responding with the right combination of light and sound,
 all happening in a tight loop without any single step freezing the rest.
 
-  -Components used and their roles --
- Component | Pin | Role 
- Arduino Uno | — | Brain of the circuit — runs all the logic and timing 
- HC-SR04 ultrasonic sensor | Trig → D9, Echo → D10 | Fires an ultrasonic pulse and listens for the echo to calculate distance 
- Green LED | D4 via 220Ω | Stays on in the safe zone, tells you nothing is nearby 
- Yellow LED | D5 via 220Ω | Turns on in the caution zone, paired with a short beep 
- Red LED | D6 via 220Ω | Turns on in the danger zone, paired with a continuous alarm 
- Buzzer | D7 | Gives an audible alert so you do not have to stare at the LEDs 
- 3× 220Ω resistors | — | Limit current into each LED so they do not burn out 
+  -Components used and their roles -- 
+ // Component | Pin | Role // 
+ // Arduino Uno | — | Brain of the circuit — runs all the logic and timing // 
+ //  HC-SR04 ultrasonic sensor | Trig → D9, Echo → D10 | Fires an ultrasonic pulse and listens for the echo to calculate distance // 
+ // Green LED | D4 via 220Ω | Stays on in the safe zone, tells you nothing is nearby // 
+ // Yellow LED | D5 via 220Ω | Turns on in the caution zone, paired with a short beep // 
+ // Red LED | D6 via 220Ω | Turns on in the danger zone, paired with a continuous alarm // 
+ // Buzzer | D7 | Gives an audible alert so you do not have to stare at the LEDs // 
+ // 3× 220Ω resistors | — | Limit current into each LED so they do not burn out // 
  
   -Challenges faced and how I solved them --
 The first problem I ran into was that the sensor was giving back random garbage readings
@@ -93,6 +93,7 @@ caution beep, which lets the function handle its own off-timing in the backgroun
  
  Tinkercad Link:
  https://www.tinkercad.com/things/htt5uoeF68Q-smart-traffic-light-simulator-with-pedestrian-override-/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fall&sharecode=g5caw_u_mo7VN_O8OwqkaN3jdzo8A1bw9J6D9DQEFb4
+ 
 code link:
 https://github.com/hasinii-ii/MaRS-ELECTRONICS-TASK-1-/blob/55b85140472c5e99f6f3e14a2ef95b009d4c0f9e/Working%20code%20for%20Section%20B%3A%20Mini%20Project%202-%20%20Smart%20Traffic%20Light%20Simulator%20with%20Pedestrian%20Override
 
@@ -114,16 +115,16 @@ pedestrian override also adds a layer of real-world thinking: the system does no
 immediately — it waits for a safe moment first, exactly like a real intersection.
 
  - Components used and their roles --
- Component | Pin | Role 
- Arduino Uno | — | Runs the state machine and controls all outputs 
- Red LED (vehicle) | D4 via 220Ω | Vehicle stop signal 
- Yellow LED (vehicle) | D5 via 220Ω | Vehicle slow-down warning 
- Green LED (vehicle) | D6 via 220Ω | Vehicle go signal 
- Red LED (pedestrian) | D7 via 220Ω | Pedestrian wait signal 
- Green LED (pedestrian) | D8 via 220Ω | Pedestrian walk signal 
- Buzzer | D9 | Rhythmic beeping during the walk phase for accessibility 
- Push button | D2 → GND | Pedestrian crossing request button 
- 5× 220Ω resistors | — | Current limiting for all five LEDs
+ // Component | Pin | Role // 
+ // Arduino Uno | — | Runs the state machine and controls all outputs // 
+ // Red LED (vehicle) | D4 via 220Ω | Vehicle stop signal // 
+ // Yellow LED (vehicle) | D5 via 220Ω | Vehicle slow-down warning // 
+ // Green LED (vehicle) | D6 via 220Ω | Vehicle go signal // 
+ // Red LED (pedestrian) | D7 via 220Ω | Pedestrian wait signal // 
+ // Green LED (pedestrian) | D8 via 220Ω | Pedestrian walk signal // 
+ // Buzzer | D9 | Rhythmic beeping during the walk phase for accessibility // 
+ // Push button | D2 → GND | Pedestrian crossing request button // 
+ // 5× 220Ω resistors | — | Current limiting for all five LEDs// 
 
   - Challenges faced and how I solved them --
 The biggest challenge was making the pedestrian request feel safe and realistic. My first
