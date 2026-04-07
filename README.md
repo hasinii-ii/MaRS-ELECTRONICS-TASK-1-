@@ -10,7 +10,10 @@ Explanation:
 code logic:
  Instead of using delay() (which blocks all execution), millis() returns the time elapsed since the program started. Each LED has its own "previous timestamp" variable. Every loop iteration checks whether enough time has passed for each LED independently — so all three blink simultaneously without interfering with each other.
 SECTION A- Question 2 — Controlling colour of RGB LED and blinking speed of another LED with potentiometer
+Tinkercard link:
 https://www.tinkercad.com/things/2G1fBwocBhV-q2-rgb-colour-blink-rate-via-potentiometer/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fall&sharecode=--GPdmvyjQGLgBZ6QjxlqVaC4xcKQeWJycMeta24cp4
+code link:
+https://github.com/hasinii-ii/MaRS-ELECTRONICS-TASK-1-/blob/2c8c99fd5e2c30b434f91547093dac79a771c5bb/Working%20code%20for%20Section%20B%3A%20Mini%20Project%20-%20Smart%20Distance%20Alert%20System
 Explanation:
 A potentiometer connected to A0 outputs an analog value from 0 to 1023, which controls two things at once. The value is divided into three colour zones that smoothly transition the RGB LED through Red→Green→Blue using analogWrite() with map() for interpolation. The same potentiometer value is also mapped to a blink interval between 100ms and 1500ms, controlling how fast a separate LED blinks. A millis()-based timer handles the blink so both colour and speed update in real time without any delay() blocking the loop.
 code logic:
@@ -18,6 +21,8 @@ code logic:
 SECTION A- Question 3 — Build a reaction time tester
 Tinkercad Link:
  https://www.tinkercad.com/things/cocej4FUYVg/editel?returnTo=%2Fdashboard%2Fdesigns%2Fall&sharecode=0cWRxQI901A2jKC4GXbXtF1Dv1tDOVsUnxwYXIBGcJw
+ code link:
+  https://github.com/hasinii-ii/MaRS-ELECTRONICS-TASK-1-/blob/2c8c99fd5e2c30b434f91547093dac79a771c5bb/Working%20code%20for%20SECTION%20A-%20Question%203%20%E2%80%94%20Build%20a%20reaction%20time%20tester
 Explanation:
 The LED turns on after a random delay of 2–7 seconds, seeded from electrical noise on a floating analog pin using randomSeed(analogRead(A0)). The button is wired with INPUT_PULLUP, meaning Arduino's internal resistor keeps the pin HIGH — pressing the button pulls it LOW, requiring no external resistor. When pressed, reaction time is calculated as millis() - ledOnTime, giving elapsed milliseconds since the LED turned on. The result is printed to the Serial Monitor along with a performance rating, and a new random round begins automatically.
 code logic:
@@ -25,6 +30,8 @@ code logic:
  Section B: Mini Project - Smart Distance Alert System
  Tinkercad Link:
  https://www.tinkercad.com/things/eq8ynWE2mUe/editel?returnTo=%2Fdashboard&sharecode=X8kD24sGivNusxO6zn3_r83DPIsSMnFiZHRfqCbPnRg
+ code link:
+  https://github.com/hasinii-ii/MaRS-ELECTRONICS-TASK-1-/blob/2c8c99fd5e2c30b434f91547093dac79a771c5bb/Working%20code%20for%20Section%20B%3A%20Mini%20Project%20-%20Smart%20Distance%20Alert%20System
   - What the project does and why I chose it
 This project measures the distance to nearby objects using an HC-SR04 ultrasonic sensor
 and gives the user both a visual and audible alert based on how close the object is. A
