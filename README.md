@@ -27,7 +27,7 @@ Explanation:
 The LED turns on after a random delay of 2–7 seconds, seeded from electrical noise on a floating analog pin using randomSeed(analogRead(A0)). The button is wired with INPUT_PULLUP, meaning Arduino's internal resistor keeps the pin HIGH — pressing the button pulls it LOW, requiring no external resistor. When pressed, reaction time is calculated as millis() - ledOnTime, giving elapsed milliseconds since the LED turned on. The result is printed to the Serial Monitor along with a performance rating, and a new random round begins automatically.
 code logic:
  INPUT_PULLUP keeps the button pin HIGH internally — pressing it pulls it LOW, requiring no external resistor. randomSeed(analogRead(A0)) seeds the RNG from electrical noise on a floating analog pin. When the LED turns on, millis() records ledOnTime. On button press, millis() - ledOnTime gives reaction time in milliseconds. After each round, a new random delay is set.
- Section B: Mini Project - Smart Distance Alert System
+ Section B: Mini Project 1 - Smart Distance Alert System
  Tinkercad Link:
  https://www.tinkercad.com/things/eq8ynWE2mUe/editel?returnTo=%2Fdashboard&sharecode=X8kD24sGivNusxO6zn3_r83DPIsSMnFiZHRfqCbPnRg
  code link:
@@ -66,3 +66,48 @@ which meant the Arduino was completely frozen during that pause and could not ta
 sensor readings. I switched to using `tone()` with a built-in duration argument for the
 caution beep, which lets the function handle its own off-timing in the background while
 `loop()` keeps running. That one change made the whole circuit feel much more responsive.
+ Section B: Mini Project 2 - Smart Traffic Light Simulator with Pedestrian Override
+ Tinkercad Link:
+https://www.tinkercad.com/things/htt5uoeF68Q/editel?returnTo=%2Fdashboard&sharecode=qqfjmiD3tMnEvSrM7bsK9GGt2sijDC0lJzBVDQkVAhY
+code link:
+
+ - What the project does and why I chose it
+This project simulates a real-world traffic intersection. Vehicle lights cycle through
+green, yellow, and red on a timed loop just like an actual traffic light. The interesting
+part is a pedestrian pushbutton — pressing it registers a walk request, and the system
+waits until it is safe (the next red phase) before honouring it. When the walk signal
+activates, the vehicle lights stay red, the pedestrian green light turns on, and a buzzer
+beeps rhythmically to signal that it is safe to cross. After the walk window ends, the
+system returns to the normal vehicle cycle automatically.
+I chose this project because none of the example projects in the task sheet had it, and I
+wanted to build something that used a state machine — a concept I had read about but never
+actually implemented. Every real embedded system, from traffic controllers to elevator
+logic, uses state machines to manage behaviour that changes over time. This felt like the
+most honest way to show that I understand not just how to blink LEDs, but how to structure
+a program that handles multiple inputs and outputs with clean, predictable logic. The
+pedestrian override also adds a layer of real-world thinking: the system does not obey
+immediately — it waits for a safe moment first, exactly like a real intersection.
+ - Components used and their roles
+ Component | Pin | Role 
+ Arduino Uno | — | Runs the state machine and controls all outputs 
+ Red LED (vehicle) | D4 via 220Ω | Vehicle stop signal 
+ Yellow LED (vehicle) | D5 via 220Ω | Vehicle slow-down warning 
+ Green LED (vehicle) | D6 via 220Ω | Vehicle go signal 
+ Red LED (pedestrian) | D7 via 220Ω | Pedestrian wait signal 
+ Green LED (pedestrian) | D8 via 220Ω | Pedestrian walk signal 
+ Buzzer | D9 | Rhythmic beeping during the walk phase for accessibility 
+ Push button | D2 → GND | Pedestrian crossing request button 
+ 5× 220Ω resistors | — | Current limiting for all five LEDs 
+  - Challenges faced and how I solved them
+The biggest challenge was making the pedestrian request feel safe and realistic. My first
+instinct was to cut to the walk signal the moment the button is pressed, but that would
+mean switching from green directly to a walk signal with no warning — dangerous in a real
+scenario. I solved this by storing the request as a boolean flag (`pedRequest = true`) and
+only acting on it when the vehicle lights reach red. The system always finishes the yellow
+phase safely before stopping traffic.
+Managing five outputs at once without using `delay()` was also a challenge. I structured
+the entire program as a state machine with four states — `VEH_GREEN`, `VEH_YELLOW`,
+`VEH_RED`, and `WALK` — each with its own `millis()` timing. Entering a new state calls
+an `enterState()` function that sets all lights correctly in one place, which kept the code
+clean and made debugging much easier. The rhythmic walk buzzer runs on its own separate
+`millis()` timer inside the walk state so it beeps on and off without blocking anything else.
