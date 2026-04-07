@@ -3,6 +3,8 @@ MaRS Club Electronics Subsystem Task 1 submission including Tinkercad simulation
 SECTION A- Question 1 — Blinking LED with different time interval
 Tinkercad Link:
 https://www.tinkercad.com/things/j6rlwBen4zJ-start-simulating/editel?lessonid=EHD2303J3YPUS5Z&projectid=OT2JZ1PL20FZRMO&returnTo=https:%2F%2Fwww.tinkercad.com%2Fdashboard%2Ftutorials&sharecode=Z5hC19WurOL88FCPqzw3z6EdhtDGP3xFHVoQiNyZrwM
+Code link:
+https://github.com/hasinii-ii/MaRS-ELECTRONICS-TASK-1-/blob/249b63829a6e5a5eb81579420961579b940fdeba/Working%20code%20for%20SECTION%20A-%20Question%201%20%E2%80%94%20Blinking%20LED%20with%20different%20time%20interval
 Explanation:
  This circuit uses an Arduino Uno with three LEDs connected to pins D11, D12, and D13, each with a 220Ω resistor to GND. The millis() function is used instead of delay() to track elapsed time independently for each LED. Each LED has its own previousMillis variable that stores the last time it toggled. Every loop iteration checks if enough time has passed for each LED separately, so all three blink simultaneously — at 500ms, 1000ms, and 1500ms — without any one LED blocking the others.
 code logic:
